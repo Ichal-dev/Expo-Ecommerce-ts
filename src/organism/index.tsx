@@ -4,5 +4,6 @@ import Keranjang from "./Keranjang";
 import User from "./User";
 import Offer from "./Offer";
 import Explore from "./Explore";
+import Profile from "./User/Profile";
 
-export { Singin, Home, Keranjang, User, Offer, Explore };
+export { Singin, Home, Keranjang, User, Offer, Explore, Profile };
