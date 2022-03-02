@@ -1,6 +1,7 @@
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { NativeBaseProvider, extendTheme, Box, Center } from "native-base";
+import { NativeBaseProvider } from "native-base";
 import Router from "./src/router";
 
 const App = () => {

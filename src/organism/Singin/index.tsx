@@ -11,9 +11,6 @@ interface SinginProps {
 }
 
 class Singin extends React.Component<SinginProps> {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <SafeAreaView style={{ padding: 20 }}>

@@ -31,13 +31,13 @@ const SearchItem = () => {
           flexDirection: "row",
         }}
       >
-        <Feather name="heart" size={24} color={COLOR_NEUTRAL_GREY} 
-          style={{ marginHorizontal: 16, }} />
-        <SimpleLineIcons
-          name="bell"
+        <Feather
+          name="heart"
           size={24}
           color={COLOR_NEUTRAL_GREY}
+          style={{ marginHorizontal: 16 }}
         />
+        <SimpleLineIcons name="bell" size={24} color={COLOR_NEUTRAL_GREY} />
       </View>
     </SafeAreaView>
   );

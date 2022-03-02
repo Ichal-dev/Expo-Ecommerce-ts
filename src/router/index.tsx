@@ -1,19 +1,25 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Singin, Home, Keranjang, User, Explore, Offer, Profile} from "../organism";
+import {
+  Singin,
+  Home,
+  Keranjang,
+  User,
+  Explore,
+  Offer,
+  Profile,
+  DetailProduct,
+} from "../organism";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons } from "@expo/vector-icons";
 import { COLOR_BROWN } from "../utils/constans";
-import { Feather } from '@expo/vector-icons';
-
-
+import { Feather } from "@expo/vector-icons";
 
 const Auth = createNativeStackNavigator();
 const Root = createNativeStackNavigator();
-const BottomTab  = createBottomTabNavigator();
-
+const BottomTab = createBottomTabNavigator();
 
 const Tab = () => {
   return (
@@ -24,26 +30,26 @@ const Tab = () => {
         headerShown: false,
       }}
     >
-          <BottomTab.Screen
-            name="Home"
-            component={Home}
-            options={{
-            tabBarLabel: "Home",
-            tabBarIcon: ({ color, size }) => (
+      <BottomTab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarLabel: "Home",
+          tabBarIcon: ({ color, size }) => (
             <Ionicons name="ios-home-outline" size={size} color={color} />
-            ),
-          }}
+          ),
+        }}
       />
-          <BottomTab.Screen
-            name="Explore"
-            component={Explore}
-            options={{
-              tabBarLabel: "Explore",
-              tabBarIcon: ({ color, size }) => (
-                <Feather name="search" size={size} color={color} />
-              ),
-            }}
-          />
+      <BottomTab.Screen
+        name="Explore"
+        component={Explore}
+        options={{
+          tabBarLabel: "Explore",
+          tabBarIcon: ({ color, size }) => (
+            <Feather name="search" size={size} color={color} />
+          ),
+        }}
+      />
       <BottomTab.Screen
         name="Keranjang"
         component={Keranjang}
@@ -91,7 +97,8 @@ const Router = () => {
     <Root.Navigator screenOptions={{ headerShown: false }}>
       <Root.Screen name="Auth" component={Authentication} />
       <Root.Screen name="Tab" component={Tab} />
-      <Root.Screen name="Profile" component={Profile}></Root.Screen>
+      <Root.Screen name="Profile" component={Profile} />
+      <Root.Screen name="DetailProduct" component={DetailProduct} />
     </Root.Navigator>
   );
 };
