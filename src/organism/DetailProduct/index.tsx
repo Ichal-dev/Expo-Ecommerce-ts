@@ -7,8 +7,12 @@ import {
   StyleSheet,
   View,
   Image,
+  TouchableOpacity,
+  Pressable,
+  ToastAndroid,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Link } from "@react-navigation/native";
 import {
   Feather,
   MaterialIcons,
@@ -22,9 +26,13 @@ import {
   COLOR_NEUTRAL_DARK,
 } from "../../utils/constans";
 
-import { Button } from "native-base";
+import { Button, Card } from "native-base";
 
 import { URL_API_UPLOADS } from "@env";
+import { data } from "../../dummyData/product";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { State } from "../../state";
+import { connect } from "react-redux";
 
 const WIDTH = Dimensions.get("window").width;
 
@@ -37,9 +45,20 @@ interface Props {
 
 class DetailProduct extends React.Component<Props> {
   private API_IMAGE = URL_API_UPLOADS;
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      cart: [],
+    };
+  }
+
+  addProduct = (id: any) => {
+    return id;
+  };
+
   render() {
-    const data = this.props.route;
-    console.log("dataPramas", data);
+    const { item } = this.props.route.params;
+
     return (
       <SafeAreaView style={{ backgroundColor: "white", flex: 1 }}>
         <View style={styles.container}>
@@ -69,10 +88,7 @@ class DetailProduct extends React.Component<Props> {
         </View>
         <ScrollView>
           <View>
-            <Image
-              source={{ uri: `${this.API_IMAGE}/${data.params.image}` }}
-              style={{ height: 238, width: 375 }}
-            />
+            <Image source={item.image} style={{ height: 238, width: 375 }} />
           </View>
           <View style={styles.wrapperTitle}>
             <Text
@@ -82,7 +98,7 @@ class DetailProduct extends React.Component<Props> {
                 fontWeight: "700",
               }}
             >
-              {data.params.name}
+              {}
             </Text>
             <AntDesign
               name="heart"
@@ -92,7 +108,11 @@ class DetailProduct extends React.Component<Props> {
             />
           </View>
           <View
-            style={{ flexDirection: "row", marginLeft: 16, marginBottom: 8 }}
+            style={{
+              flexDirection: "row",
+              marginLeft: 16,
+              marginBottom: 8,
+            }}
           >
             <FontAwesome name="star" size={16} color="orange" />
             <FontAwesome
@@ -121,7 +141,7 @@ class DetailProduct extends React.Component<Props> {
               style={{ marginLeft: 4 }}
             />
           </View>
-          <Text style={styles.textPriceStyle}>Rp. {data.params.price}</Text>
+          <Text style={styles.textPriceStyle}>{item.price}</Text>
           <View>
             <Text
               style={{
@@ -151,12 +171,16 @@ class DetailProduct extends React.Component<Props> {
             </View>
           </View>
           <Text
-            style={{ margin: 16, color: COLOR_NEUTRAL_DARK, fontWeight: "700" }}
+            style={{
+              margin: 16,
+              color: COLOR_NEUTRAL_DARK,
+              fontWeight: "700",
+            }}
           >
             Description:
           </Text>
           <Text style={{ marginLeft: 16, color: COLOR_NEUTRAL_GREY }}>
-            {data.params.description}
+            {item.description}
           </Text>
           <Button
             size="lg"
@@ -164,6 +188,10 @@ class DetailProduct extends React.Component<Props> {
               margin: 16,
               width: 324,
               alignSelf: "center",
+            }}
+            onPress={() => {
+              this.addProduct(item.id);
+              this.props.navigation.navigate("Keranjang");
             }}
           >
             Tambah Ke Keranjang

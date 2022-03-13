@@ -1,59 +1,55 @@
 import React from "react";
-import { View, Text, SafeAreaView, StyleSheet, TextInput } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+import { Dimensions, TextInput, StyleSheet, View, Image } from "react-native";
+import { Feather, MaterialIcons, FontAwesome } from "@expo/vector-icons";
 import {
+  COLOR_PRIMARY_BLUE,
   COLOR_NEUTRAL_GREY,
   COLOR_NEUTRAL_LIGHT,
-  COLOR_PRIMARY_BLUE,
 } from "../utils/constans";
-import { SimpleLineIcons } from "@expo/vector-icons";
 import { BoxContent } from "../atoms";
+
+const WIDTH = Dimensions.get("window").width;
+
+type ImageSourcePropType = React.ComponentProps<typeof Image>["source"];
+
+interface Props {
+  route: Readonly<{ children?: React.ReactNode }>;
+  Image: ImageSourcePropType;
+}
 
 const SearchItem = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <BoxContent>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            paddingHorizontal: 16,
-            paddingVertical: 15,
-          }}
-        >
-          <FontAwesome name="search" size={16} color={COLOR_PRIMARY_BLUE} />
-          <TextInput style={styles.inputStyle}></TextInput>
-        </View>
-      </BoxContent>
-      <View
+    <>
+      <BoxContent
         style={{
+          borderWidth: 1,
           flexDirection: "row",
+          height: 46,
+          alignItems: "center",
+          borderColor: COLOR_NEUTRAL_LIGHT,
+          borderRadius: 5,
         }}
       >
         <Feather
-          name="heart"
-          size={24}
-          color={COLOR_NEUTRAL_GREY}
-          style={{ marginHorizontal: 16 }}
+          name="search"
+          size={16}
+          color={COLOR_PRIMARY_BLUE}
+          style={{ marginLeft: 16 }}
         />
-        <SimpleLineIcons name="bell" size={24} color={COLOR_NEUTRAL_GREY} />
-      </View>
-    </SafeAreaView>
+        <TextInput
+          placeholder="apa yang kamu cari!!"
+          style={styles.inputStyle}
+        ></TextInput>
+      </BoxContent>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    paddingHorizontal: 16,
-  },
   inputStyle: {
     marginLeft: 8,
-    width: 207,
+    marginRight: 15,
+    width: 236,
   },
 });
 

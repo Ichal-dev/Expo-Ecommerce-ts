@@ -10,6 +10,7 @@ import {
   Offer,
   Profile,
   DetailProduct,
+  Favorites,
 } from "../organism";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -99,6 +100,7 @@ const Router = () => {
       <Root.Screen name="Tab" component={Tab} />
       <Root.Screen name="Profile" component={Profile} />
       <Root.Screen name="DetailProduct" component={DetailProduct} />
+      <Root.Screen name="Favorites" component={Favorites} />
     </Root.Navigator>
   );
 };

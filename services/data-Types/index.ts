@@ -1,5 +1,5 @@
 export interface cartProductTypes {
-  _id: string;
+  id: string;
   name: string;
   description: string;
   image: string;

@@ -6,6 +6,7 @@ import Offer from "./Offer";
 import Explore from "./Explore";
 import Profile from "./User/Profile";
 import DetailProduct from "./DetailProduct";
+import Favorites from "./Favorites";
 
 export {
   Singin,
@@ -16,4 +17,5 @@ export {
   Explore,
   Profile,
   DetailProduct,
+  Favorites,
 };

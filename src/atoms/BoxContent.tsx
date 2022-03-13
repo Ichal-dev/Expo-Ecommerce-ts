@@ -5,10 +5,11 @@ import { COLOR_NEUTRAL_LIGHT } from "../utils/constans";
 
 type BoxContentProps = {
   children: JSX.Element | JSX.Element[];
+  style?: any;
 };
 
-const BoxContent = ({ children }: BoxContentProps) => {
-  return <View style={styles.container}>{children}</View>;
+const BoxContent = ({ children, style }: BoxContentProps) => {
+  return <View style={style}>{children}</View>;
 };
 
 const styles = StyleSheet.create({

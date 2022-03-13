@@ -5,6 +5,7 @@ import { Text } from "native-base";
 import { Line } from "../../atoms";
 import { Cart, CuponBox, Modal } from "../../moleculs";
 import { COLOR_PRIMARY_BLUE } from "../../utils/constans";
+import { data } from "../../dummyData/product";
 
 interface propsCart {
   cartItem: [];
@@ -14,11 +15,12 @@ class Keranjang extends React.Component<propsCart> {
   constructor(props: propsCart) {
     super(props);
     this.state = {
-      cartItem: [],
+      carItem: [],
     };
   }
 
   render() {
+    console.log(this.props);
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.headerTitleStyle}>Keranjang Belanja</Text>
